@@ -79,9 +79,24 @@ equalBtn.addEventListener('click', () => {
     displayNumBox.textContent="";
     let num1FloatToCompute = parseFloat(num1ToCompute);
     let num2FloatToCompute = parseFloat(num2ToCompute);
-    console.log(num1FloatToCompute+", "+num2FloatToCompute+", "+operator)
-    let resultNum = operate(num1FloatToCompute,num2FloatToCompute,operator);
-    displayNumBox.textContent=resultNum;
+    
+    if (operator === 'divide' && num2FloatToCompute === 0) {
+        alert("Orh hor, cannot!")
+        num1ToCompute = 0;
+        num2ToCompute = 0;
+        operator = "";
+    } else { 
+        console.log(num1FloatToCompute+", "+num2FloatToCompute+", "+operator)
+        let resultNum = operate(num1FloatToCompute,num2FloatToCompute,operator);
+        displayNumBox.textContent=resultNum;
+
+        operator = "";
+        num2ToCompute = 0;
+        num1ToCompute = resultNum;
+        resultNum = 0;
+    }
+
+   
 } )
 //equalBtn.addEventListener('click', )
 
