@@ -7,15 +7,25 @@ body {
 }
 
 h1 {
-    font-family: 'Uni Sans Heavy CAPS', san sans-serif
+    font-family: 'Uni Sans Heavy CAPS', san sans-serif;
+    font-size: 60px;
 }
 
 h2 {
-    font-family: 'Uni Sans Thin CAPS', san sans-serif
+    font-family: 'Lemon Milk', san sans-serif;
+    font-weight:100;
+    font-size:20px;
+    margin-top:-45px;
 }
+
 #display-number {
-    width: 475px;
+    display:flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 455px;
     height: 75px;
+    box-shadow: inset 1px 3px 15px 2px #313527;
     font-family: 'Lemon Milk', sans-serif;
     font-size: 30px;
     background-color: #4e5242;
@@ -23,8 +33,8 @@ h2 {
 }
 
 .calculator {
-    width: 490px;
-    height: 480px;
+    width: 470px;
+    height: 475px;
     background-color: #d4d8bb;
     display: flex;
     flex-direction: column;
@@ -38,7 +48,6 @@ h2 {
 }
 
 .nums-pad {
-    border: 5px solid white;
     width:280px;
     height:360px;
     display: flex;
@@ -48,32 +57,31 @@ h2 {
 .nums {
     height:90px;
     width:90px;
-    background-color: #e0ebaf;
+    background-color: #babdb1;
     border: 1px solid #d4d8bb;
     font-family: 'Uni Sans Heavy CAPS', sans-serif;
     font-size: 30px;
 }
 
 .nums:hover {
-    box-shadow: inset 1px 3px 10px 1px #b3be7e;
+    box-shadow: inset 1px 3px 10px 1px #a2a797;
 }
 
 .operator-container {
-    border: 4px solid white;
     width: 190px;
 }
 
 .operator-pad {
-    border: 5px solid white;
     width: 184px;
 }
 .operator-btn {
-    height: 123px;
-    width: 90px;
+    height: 135.5px;
+    width: 88px;
     background-color: #949786;
-    border: 1px solid #d4d8bb;
+    border: none;
     font-family: 'Lemon Milk', sans-serif;
     font-size: 30px;
+    border: 1px solid #d4d8bb;
 }
 .operator-btn:hover {
     box-shadow: inset 2px 1px 10px 1px #6a6d5c;
@@ -83,6 +91,7 @@ h2 {
     width:90px;
     background-color: #949786;
     border: 1px solid #d4d8bb;
+    box-sizing: border-box;
     font-family: 'Uni Sans Heavy CAPS', sans-serif;
     font-size: 20px;
 }
@@ -91,18 +100,33 @@ h2 {
 }
 
 .other-pad {
-    border: 5px solid white;
     width: 180px;
 }
 .other-btn {
-    height: 50px;
-    width: 180px;
-    background-color: #dd5c6b;
-    border: 1px solid #d4d8bb;
+    height: 44px;
+    width: 88px;
+    background-color: #db7750;
+    border: none;
     font-family: 'Lemon Milk', sans-serif;
     font-size: 25px;
-    
+    border: 1px solid #d4d8bb;
+    box-sizing: border-box;
 }
 .other-btn:hover {
-    box-shadow: inset 2px 1px 10px 1px #b13947;
+    box-shadow: inset 2px 1px 10px 1px #ac512d;
+}
+
+#equals {
+    height: 45px;
+    width: 180px;
+    background-color: #db7750;
+    border: none;
+    font-family: 'Lemon Milk', sans-serif;
+    font-size: 25px;
+    border: 1px solid #d4d8bb;
+    box-sizing: border-box;
+    
+}
+#equals:hover {
+    box-shadow: inset 2px 1px 10px 1px #ac512d;
 }

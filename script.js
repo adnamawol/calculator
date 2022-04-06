@@ -20,13 +20,13 @@ function division (num1,num2) {
 }
 
 function operate (num1,num2,operator) {
-    if (operator === 'plus') {
+    if (operator === '+') {
         return(addition(num1,num2));
-    } else if (operator === 'minus') {
+    } else if (operator === '-') {
         return(subtraction(num1,num2));
-    } else if (operator === 'times') {
+    } else if (operator === '×') {
         return(multiplication(num1,num2));
-    } else if (operator === 'divide') {
+    } else if (operator === '÷') {
         return(division(num1,num2));
     }
 }
@@ -68,8 +68,27 @@ digitBtns.forEach((digitBtn) => digitBtn.addEventListener('click', (evt) => {
 function displayAndStoreOperator (evt) {
     displayNumBox.textContent += `${evt.target.value}`;
     operator += `${evt.target.id}`;
-    console.log(evt.target.id)
 }
+
+//WIP
+ /* let num1FloatToCompute = parseFloat(num1ToCompute);
+    let num2FloatToCompute = parseFloat(num2ToCompute);
+    
+    if (num2FloatToCompute === 0 && operator === 'divide') {
+        alert("Orh hor, cannot!")
+        num1ToCompute = 0;
+        num2ToCompute = 0;
+        operator = "";
+    } else { 
+        let intermediateNum = operate(num1FloatToCompute,num2FloatToCompute,operator);
+        console.log(num1FloatToCompute);
+        console.log(num2FloatToCompute);
+        console.log("hello"+intermediateNum)
+        operator = "";
+        num2ToCompute = 0;
+        num1ToCompute = intermediateNum;
+        intermediateNum = 0;
+    }*/
 
 const operatorBtns = document.querySelectorAll('.operator-btn');
 operatorBtns.forEach( (operatorBtn) => operatorBtn.addEventListener('click', (evt) => displayAndStoreOperator(evt)))
@@ -80,7 +99,7 @@ equalBtn.addEventListener('click', () => {
     let num1FloatToCompute = parseFloat(num1ToCompute);
     let num2FloatToCompute = parseFloat(num2ToCompute);
     
-    if (operator === 'divide' && num2FloatToCompute === 0) {
+    if (operator === '÷' && num2FloatToCompute === 0) {
         alert("Orh hor, cannot!")
         num1ToCompute = 0;
         num2ToCompute = 0;
@@ -101,11 +120,34 @@ equalBtn.addEventListener('click', () => {
 //equalBtn.addEventListener('click', )
 
 
-//clear btn
-const clearBtn = document.querySelector('#clear')
+//auto-clear btn
+const clearBtn = document.querySelector('#auto-clear');
 clearBtn.addEventListener('click', () => {
     displayNumBox.textContent = " ";
     num1ToCompute = "";
     num2ToCompute = "";
     operator = "";
+})
+
+//delete btn
+const delBtn = document.querySelector('#delete');
+delBtn.addEventListener('click', () => {
+    if (num1ToCompute !== "" && operator === "") {
+        let num1Array = [...num1ToCompute]
+        num1Array.pop();
+        num1Array.join('');
+        console.log("delete?"+parseInt(num1Array.join('')));
+        num1ToCompute = num1Array.join('');
+        console.log(num1ToCompute);
+        displayNumBox.textContent = `${parseInt(num1Array.join(''))}`;
+
+    } else {
+        let num2Array = [...num2ToCompute]
+        num2Array.pop();
+        num2Array.join('');
+        console.log("delete?"+parseInt(num2Array.join('')));
+        num2ToCompute = num2Array.join('');
+        console.log(num2ToCompute);
+        displayNumBox.textContent = `${num1ToCompute}${operator}${parseInt(num2Array.join(''))}`;
+    }
 })

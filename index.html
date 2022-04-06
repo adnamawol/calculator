@@ -7,14 +7,11 @@
 </head>
 
 <body>
-<h1>"I am the calculator"</h1>
-
+<h1>Terra Calca</h1>
 <h2>Go forth, and compute</h2>
-
-
 <div class="calculator">
-    <div id="display-number"></div><br>
-
+    <div id="display-number"></div>
+    <br>
     <div class="btns-container">
         <div class="nums-pad">
             <button class="nums" id="one" value="1">1</button>
@@ -32,16 +29,20 @@
         </div>
     
         <div class="operator-container">
+            <div class="other-pad">
+                <button class="other-btn" id="delete">DEL</button>
+                <button class="other-btn" id="auto-clear">AC</button>
+            </div>
+
             <div class="operator-pad">
-                <button id="plus" class="operator-btn" value="+">+</button>
-                <button id="minus" class="operator-btn" value="-">-</button>
-                <button id="times" class="operator-btn" value="×">×</button>
-                <button id="divide" class="operator-btn" value="÷">÷</button>
+                <button id="+" class="operator-btn" value="+">+</button>
+                <button id="-" class="operator-btn" value="-">-</button>
+                <button id="×" class="operator-btn" value="×">×</button>
+                <button id="÷" class="operator-btn" value="÷">÷</button>
             </div>
             
             <div class="other-pad">
-                <button class="other-btn" id="equals" value="=">=</button>
-                <button class="other-btn" id="clear">Clear</button>
+                <button id="equals" value="=">=</button>
             </div>
     
         </div>
