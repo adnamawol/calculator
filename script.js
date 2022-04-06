@@ -4,7 +4,6 @@ function addition (...args) {
     return addNum;
 }
 
-//might have to edit to take in multiple numbers?
 function subtraction (num1,num2) {
     return(num1-num2);
 }
@@ -14,7 +13,6 @@ function multiplication (...args) {
     return(multiplyNum);
 }
 
-//might have to edit to take in multiple numbers?
 function division (num1,num2) {
     return(num1/num2)
 }
@@ -38,8 +36,6 @@ let operator = "";
 
 
 //one function applied to elements with class 'nums' to display user input numbers
-
-
 function displayAndStoreNum1 (evt) {
     displayNumBox.textContent += `${evt.target.value}`;
     num1ToCompute += `${evt.target.value}`;
@@ -117,8 +113,6 @@ equalBtn.addEventListener('click', () => {
 
    
 } )
-//equalBtn.addEventListener('click', )
-
 
 //auto-clear btn
 const clearBtn = document.querySelector('#auto-clear');
@@ -132,22 +126,48 @@ clearBtn.addEventListener('click', () => {
 //delete btn
 const delBtn = document.querySelector('#delete');
 delBtn.addEventListener('click', () => {
-    if (num1ToCompute !== "" && operator === "") {
+    if (num2ToCompute === 0 && operator !== "") {
+        operator = "";
+        displayNumBox.textContent = `${num1ToCompute}`;
+    } else if (num1ToCompute !== "" && operator === "") {
         let num1Array = [...num1ToCompute]
         num1Array.pop();
+        if (num1Array.length === 0) {
+            num1ToCompute = 0;
+            displayNumBox.textContent = `${parseInt(num1ToCompute)}`
+            return;
+        }
         num1Array.join('');
         console.log("delete?"+parseInt(num1Array.join('')));
         num1ToCompute = num1Array.join('');
         console.log(num1ToCompute);
         displayNumBox.textContent = `${parseInt(num1Array.join(''))}`;
 
-    } else {
+    } else if (num2ToCompute !== "0" || num2ToCompute !== "") {
+        console.log("here i am"+num2ToCompute)
         let num2Array = [...num2ToCompute]
         num2Array.pop();
+        if (num2Array.length === 0) {
+            num2ToCompute = 0;
+            displayNumBox.textContent = `${parseInt(num1ToCompute)}${operator}`
+            return;
+        }
         num2Array.join('');
         console.log("delete?"+parseInt(num2Array.join('')));
         num2ToCompute = num2Array.join('');
         console.log(num2ToCompute);
         displayNumBox.textContent = `${num1ToCompute}${operator}${parseInt(num2Array.join(''))}`;
+    } 
+})
+
+//negative and positive numbers
+const posNegBtn = document.querySelector('#posneg');
+posNegBtn.addEventListener('click', () => {
+    if (operator === "") {
+       num1ToCompute = 0 - parseFloat(num1ToCompute);
+       displayNumBox.textContent = `${num1ToCompute}`;
+    } else {
+        num2ToCompute = 0 - parseFloat(num2ToCompute);
+        displayNumBox.textContent = `${num1ToCompute}${operator}${num2ToCompute}`;
     }
 })

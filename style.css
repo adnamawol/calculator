@@ -21,10 +21,11 @@ h2 {
 #display-number {
     display:flex;
     justify-content: flex-end;
+    align-items: flex-end;
     box-sizing: border-box;
     padding: 5px;
     width: 455px;
-    height: 75px;
+    height: 110px;
     box-shadow: inset 1px 3px 15px 2px #313527;
     font-family: 'Lemon Milk', sans-serif;
     font-size: 30px;
@@ -34,7 +35,7 @@ h2 {
 
 .calculator {
     width: 470px;
-    height: 475px;
+    height: 505px;
     background-color: #d4d8bb;
     display: flex;
     flex-direction: column;
@@ -86,6 +87,16 @@ h2 {
 .operator-btn:hover {
     box-shadow: inset 2px 1px 10px 1px #6a6d5c;
 }
+.operator-btn-sel {
+    height: 135.5px;
+    width: 88px;
+    background-color: #6a6d5c;
+    border: none;
+    font-family: 'Lemon Milk', sans-serif;
+    font-size: 30px;
+    border: 1px solid #d4d8bb;
+}
+
 .operator-btn-1 {
     height:90px;
     width:90px;
