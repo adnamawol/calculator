@@ -87,7 +87,7 @@ h2 {
 .operator-btn:hover {
     box-shadow: inset 2px 1px 10px 1px #6a6d5c;
 }
-.operator-btn-sel {
+.operator-btn.sel {
     height: 135.5px;
     width: 88px;
     background-color: #6a6d5c;

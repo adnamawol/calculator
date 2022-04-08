@@ -18,13 +18,13 @@ function division (num1,num2) {
 }
 
 function operate (num1,num2,operator) {
-    if (operator === '+') {
+    if (operator === "+") {
         return(addition(num1,num2));
-    } else if (operator === '-') {
+    } else if (operator === "-") {
         return(subtraction(num1,num2));
-    } else if (operator === '×') {
+    } else if (operator === "×") {
         return(multiplication(num1,num2));
-    } else if (operator === '÷') {
+    } else if (operator === "÷") {
         return(division(num1,num2));
     }
 }
@@ -34,6 +34,31 @@ let num1ToCompute = "";
 let num2ToCompute = "";
 let operator = "";
 
+//evaluating only one pair of number at any one time
+function evalAPairOfNum (evt) { 
+    if (operator.length >= 2) { 
+    displayNumBox.textContent="";
+    let num1FloatToCompute = parseFloat(num1ToCompute);
+    let num2FloatToCompute = parseFloat(num2ToCompute);
+        
+    if (operator.slice(0,1) === '÷' && num2FloatToCompute === 0) {
+        alert("Orh hor, cannot!")
+        num1ToCompute = 0;
+        num2ToCompute = 0;
+        operator = "";
+    } else { 
+        let firstOperator = operator.slice(0,1);
+        console.log(num1FloatToCompute+", "+num2FloatToCompute+", "+firstOperator)
+        let resultNum = operate(num1FloatToCompute,num2FloatToCompute,firstOperator);
+        operator = operator.slice(1,2);
+        displayNumBox.textContent=`${resultNum}${operator}`;
+        num2ToCompute = 0;
+        num1ToCompute = resultNum;
+        resultNum = 0;
+        console.log("I've struck gold!!!!")
+    }
+    }
+}
 
 //one function applied to elements with class 'nums' to display user input numbers
 function displayAndStoreNum1 (evt) {
@@ -87,7 +112,8 @@ function displayAndStoreOperator (evt) {
     }*/
 
 const operatorBtns = document.querySelectorAll('.operator-btn');
-operatorBtns.forEach( (operatorBtn) => operatorBtn.addEventListener('click', (evt) => displayAndStoreOperator(evt)))
+operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => displayAndStoreOperator(evt)))
+operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => evalAPairOfNum(evt)))
 
 const equalBtn = document.querySelector('#equals')
 equalBtn.addEventListener('click', () => {
@@ -110,9 +136,8 @@ equalBtn.addEventListener('click', () => {
         num1ToCompute = resultNum;
         resultNum = 0;
     }
-
-   
 } )
+
 
 //auto-clear btn
 const clearBtn = document.querySelector('#auto-clear');
