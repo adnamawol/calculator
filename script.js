@@ -1,3 +1,4 @@
+//operator functions
 function addition (...args) {
     let addNum = args.reduce( 
         (prevVal, currentVal) => prevVal + currentVal, 0)
@@ -34,33 +35,7 @@ let num1ToCompute = "";
 let num2ToCompute = "";
 let operator = "";
 
-//evaluating only one pair of number at any one time
-function evalAPairOfNum (evt) { 
-    if (operator.length >= 2) { 
-    displayNumBox.textContent="";
-    let num1FloatToCompute = parseFloat(num1ToCompute);
-    let num2FloatToCompute = parseFloat(num2ToCompute);
-        
-    if (operator.slice(0,1) === '÷' && num2FloatToCompute === 0) {
-        alert("Orh hor, cannot!")
-        num1ToCompute = 0;
-        num2ToCompute = 0;
-        operator = "";
-    } else { 
-        let firstOperator = operator.slice(0,1);
-        console.log(num1FloatToCompute+", "+num2FloatToCompute+", "+firstOperator)
-        let resultNum = operate(num1FloatToCompute,num2FloatToCompute,firstOperator);
-        operator = operator.slice(1,2);
-        displayNumBox.textContent=`${resultNum}${operator}`;
-        num2ToCompute = 0;
-        num1ToCompute = resultNum;
-        resultNum = 0;
-        console.log("I've struck gold!!!!")
-    }
-    }
-}
-
-//one function applied to elements with class 'nums' to display user input numbers
+//storing and displaying numbers
 function displayAndStoreNum1 (evt) {
     displayNumBox.textContent += `${evt.target.value}`;
     num1ToCompute += `${evt.target.value}`;
@@ -84,37 +59,44 @@ digitBtns.forEach((digitBtn) => digitBtn.addEventListener('click', (evt) => {
     } else {
         displayAndStoreNum2(evt)
     }
-    }))
+}))
 
 function displayAndStoreOperator (evt) {
     displayNumBox.textContent += `${evt.target.value}`;
     operator += `${evt.target.id}`;
 }
 
-//WIP
- /* let num1FloatToCompute = parseFloat(num1ToCompute);
+//operatorBtns
+const operatorBtns = document.querySelectorAll('.operator-btn');
+operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => displayAndStoreOperator(evt)))
+operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => evalAPairOfNum(evt)))
+
+//evaluating only one pair of number at any one time
+function evalAPairOfNum (evt) { 
+    if (operator.length >= 2) { 
+    displayNumBox.textContent="";
+    let num1FloatToCompute = parseFloat(num1ToCompute);
     let num2FloatToCompute = parseFloat(num2ToCompute);
-    
-    if (num2FloatToCompute === 0 && operator === 'divide') {
+        
+    if (operator.slice(0,1) === '÷' && num2FloatToCompute === 0) {
         alert("Orh hor, cannot!")
         num1ToCompute = 0;
         num2ToCompute = 0;
         operator = "";
     } else { 
-        let intermediateNum = operate(num1FloatToCompute,num2FloatToCompute,operator);
-        console.log(num1FloatToCompute);
-        console.log(num2FloatToCompute);
-        console.log("hello"+intermediateNum)
-        operator = "";
+        let firstOperator = operator.slice(0,1);
+        console.log(num1FloatToCompute+", "+num2FloatToCompute+", "+firstOperator)
+        let resultNum = operate(num1FloatToCompute,num2FloatToCompute,firstOperator);
+        operator = operator.slice(1,2);
+        displayNumBox.textContent=`${resultNum}${operator}`;
         num2ToCompute = 0;
-        num1ToCompute = intermediateNum;
-        intermediateNum = 0;
-    }*/
+        num1ToCompute = resultNum;
+        resultNum = 0;
+    }
+    }
+}
 
-const operatorBtns = document.querySelectorAll('.operator-btn');
-operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => displayAndStoreOperator(evt)))
-operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener('click', (evt) => evalAPairOfNum(evt)))
-
+//equalBtn
 const equalBtn = document.querySelector('#equals')
 equalBtn.addEventListener('click', () => {
     displayNumBox.textContent="";
